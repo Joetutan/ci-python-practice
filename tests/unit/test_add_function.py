@@ -16,3 +16,15 @@ from app.calculator import Calculator
 )
 def test_add(a, b, expected):
     assert Calculator.add(Decimal(a), Decimal(b)) == Decimal(expected)
+
+
+@pytest.mark.parametrize(
+    "a,b,expected",
+    [
+        ("1e100", "1e100", "2e100"),
+        ("0.001", "0.0001", "0.0011"),
+        ("1.5", "-1.5", "0"),
+    ],
+)
+def test_add_edge_cases(a, b, expected):
+    assert Calculator.add(Decimal(a), Decimal(b)) == Decimal(expected)

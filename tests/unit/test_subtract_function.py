@@ -17,3 +17,15 @@ from app.calculator import Calculator
 )
 def test_subtract(a, b, expected):
     assert Calculator.subtract(Decimal(a), Decimal(b)) == Decimal(expected)
+
+
+@pytest.mark.parametrize(
+    "a,b,expected",
+    [
+        ("1e100", "1e100", "0"),
+        ("0", "0.5", "-0.5"),
+        ("1.000", "0.001", "0.999"),
+    ],
+)
+def test_subtract_edge_cases(a, b, expected):
+    assert Calculator.subtract(Decimal(a), Decimal(b)) == Decimal(expected)

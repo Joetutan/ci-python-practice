@@ -3,7 +3,7 @@ from utils.input_validation import read_decimal
 
 
 def main():
-
+    """Run the interactive calculator loop until the user enters "exit"."""
     while True:
         cmd = (input("Choose action (add,sub,mul,div,exit)...\n")).strip().lower()
         try:
