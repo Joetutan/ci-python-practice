@@ -26,6 +26,12 @@ def main():
                     num2 = read_decimal("Enter second number...\n")
                     product = Calculator.multiply(num1, num2)
                     print(f"{num1} * {num2} = {product}")
+                case "div":
+                    print("Divide two numbers \n")
+                    num1 = read_decimal("Enter first number... \n")
+                    num2 = read_decimal("Enter second number...\n")
+                    fraction = Calculator.divide(num1, num2)
+                    print(f"{num1} / {num2} = {fraction}")
                 case "exit":
                     break
                 case _:

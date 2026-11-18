@@ -13,3 +13,9 @@ class Calculator:
     @staticmethod
     def multiply(a: Decimal, b: Decimal) -> Decimal:
         return a * b
+
+    @staticmethod
+    def divide(a: Decimal, b: Decimal) -> Decimal:
+        if b == 0:
+            raise ZeroDivisionError("Zero division not allowed...")
+        return a / b
