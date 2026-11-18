@@ -5,7 +5,7 @@ from utils.input_validation import read_decimal
 def main():
 
     while True:
-        cmd = (input("Choose action (add,sub,multi,div,exit)...\n")).strip().lower()
+        cmd = (input("Choose action (add,sub,mul,div,exit)...\n")).strip().lower()
         try:
             match cmd:
                 case "add":
@@ -20,6 +20,12 @@ def main():
                     num2 = read_decimal("Enter second number...\n")
                     diff = Calculator.subtract(num1, num2)
                     print(f"{num1} - {num2} = {diff}")
+                case "mul":
+                    print("Multiply two numbers \n")
+                    num1 = read_decimal("Enter first number... \n")
+                    num2 = read_decimal("Enter second number...\n")
+                    product = Calculator.multiply(num1, num2)
+                    print(f"{num1} * {num2} = {product}")
                 case "exit":
                     break
                 case _:
