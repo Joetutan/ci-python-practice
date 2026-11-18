@@ -16,3 +16,15 @@ from app.calculator import Calculator
 )
 def test_multiply(a, b, expected):
     assert Calculator.multiply(Decimal(a), Decimal(b)) == Decimal(expected)
+
+
+@pytest.mark.parametrize(
+    "a,b,expected",
+    [
+        ("1e50", "1e50", "1e100"),
+        ("0.001", "0.001", "0.000001"),
+        ("-1", "123.456", "-123.456"),
+    ],
+)
+def test_multiply_edge_cases(a, b, expected):
+    assert Calculator.multiply(Decimal(a), Decimal(b)) == Decimal(expected)

@@ -23,3 +23,16 @@ def test_read_decimal_retries_on_invalid_input(invalid, capsys):
     with patch("builtins.input", side_effect=[invalid, "7"]):
         assert read_decimal("Enter number...\n") == Decimal(7)
     assert "Not a valid number" in capsys.readouterr().out
+
+
+@pytest.mark.parametrize(
+    "raw,expected",
+    [
+        ("1e3", Decimal("1e3")),
+        (".5", Decimal("0.5")),
+        ("  +2.5\t", Decimal("2.5")),
+    ],
+)
+def test_read_decimal_edge_cases(raw, expected):
+    with patch("builtins.input", return_value=raw):
+        assert read_decimal("Enter number...\n") == expected
